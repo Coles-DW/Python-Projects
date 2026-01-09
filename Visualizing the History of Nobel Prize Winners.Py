@@ -83,3 +83,28 @@ max_female_dict = {int(max_index[0]): max_index[1]}
 max_female_dict
 
 {2020: 'Literature'}
+
+#Step 5 — First woman to receive a Nobel Prize
+# Filter to female laureates and sort by year
+first_woman = (nobel[nobel["sex"] == "Female"].sort_values("year")).iloc[0]
+
+first_woman_name = first_woman["full_name"]
+first_woman_category = first_woman["category"]
+
+first_woman_name, first_woman_category 
+('Marie Curie, née Sklodowska', 'Physics')
+
+#Step 6 — Individuals / organizations who won more than once
+# Count prizes per full name
+name_counts = nobel["full_name"].value_counts()
+
+# Names appearing more than once
+repeat_list = name_counts[name_counts > 1].index.tolist()
+
+repeat_list
+['Comité international de la Croix Rouge (International Committee of the Red Cross)',
+ 'Linus Carl Pauling',
+ 'John Bardeen',
+ 'Frederick Sanger',
+ 'Marie Curie, née Sklodowska',
+ 'Office of the United Nations High Commissioner for Refugees (UNHCR)']
